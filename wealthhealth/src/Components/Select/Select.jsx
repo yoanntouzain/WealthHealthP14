@@ -2,24 +2,15 @@ import React from 'react'
 
 import Select from 'react-select'
 
-function SelectOption() {
-  const colourOptions = [
-    { value: 'Sales', label: 'Sales' },
-    { value: 'Marketing', label: 'Marketing' },
-    { value: 'Engineering', label: 'Engineering' },
-    { value: 'Human Resources', label: 'Human Resources' },
-    { value: 'Legal', label: 'Legal' },
-  ]
-
+function SelectOption(props) {
   return (
-    <>
-      <Select
-        className="basic-single"
-        classNamePrefix="select"
-        name="Department"
-        options={colourOptions}
-      />
-    </>
+    <Select
+      className="basic-single"
+      classNamePrefix="select"
+      id={props.id}
+      name={props.name}
+      options={props.options}
+    />
   )
 }
 export default SelectOption
