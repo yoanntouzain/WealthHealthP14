@@ -1,0 +1,7 @@
+.myCalendar:not(display-calendar) {
+    display: none;
+}
+
+.myCalendar.display-calendar {
+    display: block;
+}

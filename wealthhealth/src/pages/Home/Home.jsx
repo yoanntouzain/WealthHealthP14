@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Picker from '../../Components/Picker/Picker'
+import Select from '../../Components/Select/Select'
+import './home.css'
 
 function Home() {
-  function saveEmployee() {
-    console.table('hello')
+  const [display, setDisplay] = useState(false)
+  const [date, onChange] = useState(new Date())
+
+  function test() {
+    display ? setDisplay(false) : setDisplay(true)
   }
 
   return (
@@ -22,7 +28,18 @@ function Home() {
           <input type="text" id="last-name" />
 
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input id="date-of-birth" type="text" />
+          <input
+            id="date-of-birth"
+            type="text"
+            onClick={test}
+            onChange={onChange}
+            value={date.toLocaleDateString()}
+          />
+          <Picker
+            attribut={`myCalendar ${display ? 'display-calendar' : ''}`}
+            date={date}
+            change={onChange}
+          />
 
           <label htmlFor="start-date">Start Date</label>
           <input id="start-date" type="text" />
@@ -51,9 +68,10 @@ function Home() {
             <option>Human Resources</option>
             <option>Legal</option>
           </select>
+          <Select />
         </form>
 
-        <button onClick={saveEmployee()}>Save</button>
+        <button>Save</button>
       </div>
       <div id="confirmation" className="modal">
         Employee Created!
