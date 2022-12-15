@@ -1,7 +1,4 @@
-.myCalendar:not(display-calendar) {
-    display: none;
-}
-
-.myCalendar.display-calendar {
-    display: block;
+#create-employee>div:nth-child(6)>div,
+#create-employee>div:nth-child(8)>div {
+    width: 85%;
 }
