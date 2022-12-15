@@ -78,12 +78,14 @@ const stateOptions = [
 ]
 
 function Home() {
-  const [display, setDisplay] = useState(false)
+  const [displayPicker, setDisplayPicker] = useState(false)
+  const [displayModal, setDisplayModal] = useState(false)
   const [date, onChange] = useState(new Date())
 
-  function test() {
-    display ? setDisplay(false) : setDisplay(true)
+  function openPicker() {
+    displayPicker ? setDisplayPicker(false) : setDisplayPicker(true)
   }
+
   function saveForm() {
     const firstName = document.getElementById('first-name').value
     const lastName = document.getElementById('last-name').value
@@ -96,23 +98,29 @@ function Home() {
     const department = document.getElementsByName('department')[0].value
     let localStorageData = localStorage.setItem(
       'datas',
-      JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        dateOfBirth: dateOfBirth,
-        startDate: startDate,
-        street: street,
-        city: city,
-        state: state,
-        zipCode: zipCode,
-        department: department,
-      })
+      JSON.stringify([
+        {
+          firstName: firstName,
+          lastName: lastName,
+          dateOfBirth: dateOfBirth,
+          startDate: startDate,
+          street: street,
+          city: city,
+          state: state,
+          zipCode: zipCode,
+          department: department,
+        },
+      ])
     )
+    displayModal ? setDisplayModal(false) : setDisplayModal(true)
     return localStorageData
+  }
+  function closeModal() {
+    displayModal ? setDisplayModal(false) : setDisplayModal(true)
   }
 
   return (
-    <main>
+    <main className="main-home">
       <div className="title">
         <h1>HRnet</h1>
       </div>
@@ -130,12 +138,12 @@ function Home() {
           <input
             id="date-of-birth"
             type="text"
-            onClick={test}
+            onClick={openPicker}
             onChange={onChange}
             value={date.toLocaleDateString()}
           />
           <Picker
-            attribut={`myCalendar ${display ? 'display-calendar' : ''}`}
+            attribut={`myCalendar ${displayPicker ? 'display-calendar' : ''}`}
             date={date}
             change={onChange}
           />
@@ -169,8 +177,14 @@ function Home() {
 
         <button onClick={saveForm}>Save</button>
       </div>
-      <div id="confirmation" className="modal">
+      <div
+        id="confirmation"
+        className={`modal ${displayModal ? 'display-modal' : ''}`}
+      >
         Employee Created!
+        <button className="closeModal" onClick={closeModal}>
+          Fermer
+        </button>
       </div>
     </main>
   )

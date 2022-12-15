@@ -6,21 +6,6 @@ import './dataTable.css'
 
 const column = [
   {
-    name: 'city',
-    selector: (row) => row.city,
-    sortable: true,
-  },
-  {
-    name: 'dateOfBirth',
-    selector: (row) => row.dateOfBirth,
-    sortable: true,
-  },
-  {
-    name: 'department',
-    selector: (row) => row.department,
-    sortable: true,
-  },
-  {
     name: 'firstName',
     selector: (row) => row.firstName,
     sortable: true,
@@ -36,8 +21,13 @@ const column = [
     sortable: true,
   },
   {
-    name: 'state',
-    selector: (row) => row.state,
+    name: 'department',
+    selector: (row) => row.department,
+    sortable: true,
+  },
+  {
+    name: 'dateOfBirth',
+    selector: (row) => row.dateOfBirth,
     sortable: true,
   },
   {
@@ -46,44 +36,30 @@ const column = [
     sortable: true,
   },
   {
+    name: 'city',
+    selector: (row) => row.city,
+    sortable: true,
+  },
+  {
+    name: 'state',
+    selector: (row) => row.state,
+    sortable: true,
+  },
+  {
     name: 'zipCode',
     selector: (row) => row.zipCode,
     sortable: true,
   },
 ]
-
-const data = [
-  {
-    dateOfBirth: '12/07/2022',
-    department: 'Marketing',
-    firstName: 'Yoann',
-    lastName: 'Touzain',
-    startDate: '12/15/2022',
-    state: 'AL',
-    street: '7, rue des palmiers',
-    city: 'Montcorbon',
-    zipCode: '45220',
-  },
-  {
-    dateOfBirth: '12/07/2022',
-    department: 'Marketing',
-    firstName: 'Yoann',
-    lastName: 'Touzain',
-    startDate: '12/15/2022',
-    state: 'AL',
-    street: '7, rue des palmiers',
-    city: 'Montcorbon',
-    zipCode: '45220',
-  },
-]
+let datas = ''
 
 const isIndeterminate = (indeterminate) => indeterminate
 const selectableRowsComponentProps = { indeterminate: isIndeterminate }
 
 function DataTables() {
-  localStorage.setItem('data', JSON.stringify(data))
-  let datas = JSON.parse(localStorage.getItem('data'))
-  console.log(localStorage)
+  if (localStorage.length !== 0) {
+    datas = JSON.parse(localStorage.getItem('datas'))
+  }
   return (
     <div className="App">
       <Paper>
