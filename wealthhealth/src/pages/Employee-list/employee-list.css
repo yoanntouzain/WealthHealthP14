@@ -1,0 +1,49 @@
+.container-employee-list {
+    margin: auto;
+}
+
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(1)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(2)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(3)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(4)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(5)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(6)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(7)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(8)>div>span,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(9)>div>span {
+    display: none;
+}
+
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(1)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(2)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(3)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(4)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(5)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(6)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(7)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(8)>div,
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(9)>div,
+#cell-1-undefined,
+#cell-2-undefined,
+#cell-3-undefined,
+#cell-4-undefined,
+#cell-5-undefined,
+#cell-6-undefined,
+#cell-7-undefined,
+#cell-8-undefined,
+#cell-9-undefined {
+    justify-content: center;
+}
+
+#employee-div>div>div>div.sc-dmctIk.WQNxq>div>div>div.sc-gswNZR.beUiVL.rdt_TableHead>div>div:nth-child(5)>div>span #cell-1-undefined>div,
+#cell-2-undefined>div,
+#cell-3-undefined>div,
+#cell-4-undefined>div,
+#cell-5-undefined>div,
+#cell-6-undefined>div,
+#cell-7-undefined>div,
+#cell-8-undefined>div,
+#cell-9-undefined>div {
+    overflow: visible;
+    white-space: normal;
+}
