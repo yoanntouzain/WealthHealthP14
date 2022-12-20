@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import Picker from '../../Components/Picker/Picker'
 import Select from '../../Components/Select/Select'
 import './home.css'
+import { Modals } from 'modal-component-wealth-health'
 
+let array = []
 const departmentOptions = [
   { value: 'Sales', label: 'Sales' },
   { value: 'Marketing', label: 'Marketing' },
@@ -78,43 +80,52 @@ const stateOptions = [
 ]
 
 function Home() {
-  const [displayPicker, setDisplayPicker] = useState(false)
   const [displayModal, setDisplayModal] = useState(false)
-  const [date, onChange] = useState(new Date())
+  const [dateBirth, onChangeBirth] = useState(new Date())
+  const [dateStart, onChangeStart] = useState(new Date())
 
-  function openPicker() {
-    displayPicker ? setDisplayPicker(false) : setDisplayPicker(true)
-  }
-
-  function saveForm() {
+  function saveForm(e) {
+    e.preventDefault()
     const firstName = document.getElementById('first-name').value
     const lastName = document.getElementById('last-name').value
-    const dateOfBirth = document.getElementById('date-of-birth').value
-    const startDate = document.getElementById('start-date').value
+    const dateOfBirth = dateBirth.toLocaleDateString()
+    const startDate = dateStart.toLocaleDateString()
     const street = document.getElementById('street').value
     const city = document.getElementById('city').value
     const state = document.getElementsByName('state')[0].value
     const zipCode = document.getElementById('zip-code').value
     const department = document.getElementsByName('department')[0].value
-    let localStorageData = localStorage.setItem(
-      'datas',
-      JSON.stringify([
-        {
-          firstName: firstName,
-          lastName: lastName,
-          dateOfBirth: dateOfBirth,
-          startDate: startDate,
-          street: street,
-          city: city,
-          state: state,
-          zipCode: zipCode,
-          department: department,
-        },
-      ])
-    )
+    if (localStorage.length !== 0) {
+      array.push(...JSON.parse(localStorage.getItem('datas')))
+      array.push({
+        firstName: firstName,
+        lastName: lastName,
+        dateOfBirth: dateOfBirth,
+        startDate: startDate,
+        street: street,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        department: department,
+      })
+    } else {
+      array.push({
+        firstName: firstName,
+        lastName: lastName,
+        dateOfBirth: dateOfBirth,
+        startDate: startDate,
+        street: street,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        department: department,
+      })
+    }
+    let localStorageData = localStorage.setItem('datas', JSON.stringify(array))
     displayModal ? setDisplayModal(false) : setDisplayModal(true)
     return localStorageData
   }
+
   function closeModal() {
     displayModal ? setDisplayModal(false) : setDisplayModal(true)
   }
@@ -127,44 +138,38 @@ function Home() {
       <div className="container">
         <Link to="/employee-list">View Current Employees</Link>
         <h2>Create Employee</h2>
-        <form action="#" id="create-employee">
+        <form action="#" id="create-employee" onSubmit={saveForm}>
           <label htmlFor="first-name">First Name</label>
-          <input type="text" id="first-name" />
+          <input type="text" id="first-name" required />
 
           <label htmlFor="last-name">Last Name</label>
-          <input type="text" id="last-name" />
+          <input type="text" id="last-name" required />
 
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input
-            id="date-of-birth"
-            type="text"
-            onClick={openPicker}
-            onChange={onChange}
-            value={date.toLocaleDateString()}
-          />
           <Picker
-            attribut={`myCalendar ${displayPicker ? 'display-calendar' : ''}`}
-            date={date}
-            change={onChange}
+            id="date-of-birth"
+            date={dateBirth}
+            change={onChangeBirth}
+            required
           />
 
           <label htmlFor="start-date">Start Date</label>
-          <input id="start-date" type="text" />
+          <Picker id="start-date" date={dateStart} change={onChangeStart} />
 
           <fieldset className="address">
             <legend>Address</legend>
 
             <label htmlFor="street">Street</label>
-            <input id="street" type="text" />
+            <input id="street" type="text" required />
 
             <label htmlFor="city">City</label>
-            <input id="city" type="text" />
+            <input id="city" type="text" required />
 
             <label htmlFor="state">State</label>
             <Select name="state" id="state" options={stateOptions} />
 
             <label htmlFor="zip-code">Zip Code</label>
-            <input id="zip-code" type="number" />
+            <input id="zip-code" type="number" required />
           </fieldset>
 
           <label htmlFor="department">Department</label>
@@ -173,18 +178,18 @@ function Home() {
             id="department"
             options={departmentOptions}
           />
+          <button>Save</button>
         </form>
-
-        <button onClick={saveForm}>Save</button>
       </div>
       <div
         id="confirmation"
         className={`modal ${displayModal ? 'display-modal' : ''}`}
       >
-        Employee Created!
-        <button className="closeModal" onClick={closeModal}>
-          Fermer
-        </button>
+        <div className="background-modal">s</div>
+        <Modals />
+        <div className="croix" onClick={closeModal}>
+          x
+        </div>
       </div>
     </main>
   )

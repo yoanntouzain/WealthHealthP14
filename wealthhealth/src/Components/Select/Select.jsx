@@ -10,6 +10,7 @@ function SelectOption(props) {
       id={props.id}
       name={props.name}
       options={props.options}
+      required={true}
     />
   )
 }
