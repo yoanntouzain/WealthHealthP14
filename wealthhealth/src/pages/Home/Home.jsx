@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Picker from '../../Components/Picker/Picker'
 import Select from '../../Components/Select/Select'
 import './home.css'
+import { Modals } from 'modal-component-wealth-health'
 
 let array = []
 const departmentOptions = [
@@ -82,7 +83,6 @@ function Home() {
   const [displayModal, setDisplayModal] = useState(false)
   const [dateBirth, onChangeBirth] = useState(new Date())
   const [dateStart, onChangeStart] = useState(new Date())
-  const navigate = useNavigate()
 
   function saveForm(e) {
     e.preventDefault()
@@ -125,9 +125,9 @@ function Home() {
     displayModal ? setDisplayModal(false) : setDisplayModal(true)
     return localStorageData
   }
+
   function closeModal() {
     displayModal ? setDisplayModal(false) : setDisplayModal(true)
-    navigate('/employee-list')
   }
 
   return (
@@ -185,10 +185,11 @@ function Home() {
         id="confirmation"
         className={`modal ${displayModal ? 'display-modal' : ''}`}
       >
-        Employee Created!
-        <button className="closeModal" onClick={closeModal}>
-          Fermer
-        </button>
+        <div className="background-modal">s</div>
+        <Modals />
+        <div className="croix" onClick={closeModal}>
+          x
+        </div>
       </div>
     </main>
   )
