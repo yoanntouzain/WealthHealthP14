@@ -13,7 +13,6 @@ function Picker(props) {
         calendarIcon={null}
         clearIcon={null}
         id={props.id}
-        // className={props.attribut}
         value={props.date}
         onChange={props.change}
         required={true}

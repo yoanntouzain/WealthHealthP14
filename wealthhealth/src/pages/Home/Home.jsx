@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Picker from '../../Components/Picker/Picker'
 import Select from '../../Components/Select/Select'
 import './home.css'
-import { Modals } from 'modal-component-wealth-health'
+import { Modals } from 'modal-component-wealth-health-p14-v4'
 
 let array = []
 const departmentOptions = [
@@ -79,6 +79,7 @@ const stateOptions = [
   { value: 'Wyoming', label: 'Wyoming' },
 ]
 
+console.log(array)
 function Home() {
   const [displayModal, setDisplayModal] = useState(false)
   const [dateBirth, onChangeBirth] = useState(new Date())
@@ -96,6 +97,7 @@ function Home() {
     const zipCode = document.getElementById('zip-code').value
     const department = document.getElementsByName('department')[0].value
     if (localStorage.length !== 0) {
+      array = []
       array.push(...JSON.parse(localStorage.getItem('datas')))
       array.push({
         firstName: firstName,
@@ -121,6 +123,7 @@ function Home() {
         department: department,
       })
     }
+    console.log(array)
     let localStorageData = localStorage.setItem('datas', JSON.stringify(array))
     displayModal ? setDisplayModal(false) : setDisplayModal(true)
     return localStorageData
@@ -178,18 +181,13 @@ function Home() {
             id="department"
             options={departmentOptions}
           />
-          <button>Save</button>
+          <Modals
+            buttonValue={'Save'}
+            classNameModal={`${displayModal ? 'display-modal' : ''}`}
+            close={closeModal}
+            message={'Employee Created!'}
+          />
         </form>
-      </div>
-      <div
-        id="confirmation"
-        className={`modal ${displayModal ? 'display-modal' : ''}`}
-      >
-        <div className="background-modal">s</div>
-        <Modals />
-        <div className="croix" onClick={closeModal}>
-          x
-        </div>
       </div>
     </main>
   )
