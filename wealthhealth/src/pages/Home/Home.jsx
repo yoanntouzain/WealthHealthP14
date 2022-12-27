@@ -79,7 +79,7 @@ const stateOptions = [
   { value: 'Wyoming', label: 'Wyoming' },
 ]
 
-console.log(array)
+//console.log(array)
 function Home() {
   const [displayModal, setDisplayModal] = useState(false)
   const [dateBirth, onChangeBirth] = useState(new Date())
@@ -123,7 +123,7 @@ function Home() {
         department: department,
       })
     }
-    console.log(array)
+    //console.log(array)
     let localStorageData = localStorage.setItem('datas', JSON.stringify(array))
     displayModal ? setDisplayModal(false) : setDisplayModal(true)
     return localStorageData
@@ -139,6 +139,7 @@ function Home() {
         <h1>HRnet</h1>
       </div>
       <div className="container">
+        <Link to="/testDataTable">test Data Table</Link>
         <Link to="/employee-list">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee" onSubmit={saveForm}>
