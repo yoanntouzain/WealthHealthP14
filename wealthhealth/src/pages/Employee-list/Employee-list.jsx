@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import DataTables from '../../Components/DataTable/DataTable'
+import DataTables from '../../Components/DataTables/DataTables'
 import './employee-list.css'
 
 function EmployeeList() {
