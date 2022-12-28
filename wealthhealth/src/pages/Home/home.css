@@ -26,3 +26,7 @@ label {
 .address {
     margin-top: 10px;
 }
+
+#confirmation>div.text {
+    padding-bottom: 1%;
+}
