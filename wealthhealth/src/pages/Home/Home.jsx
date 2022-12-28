@@ -184,7 +184,7 @@ function Home() {
           />
           <Modals
             buttonValue={'Save'}
-            classNameModal={`${displayModal ? 'display-modal' : ''}`}
+            classNameModal={`${displayModal ? 'display-modal' : ''} myModal`}
             close={closeModal}
             message={'Employee Created!'}
           />
